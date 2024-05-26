@@ -1,7 +1,9 @@
 import Image from "next/image"
 import styles from "./db_body.module.css"
 
-function Row({key="", img, icon = "", rank, name, designation, hrs, changes }: any) {
+function Row({ key = "", img, icon = "", rank, name, designation, hrs, changes }: any) {
+    const [color1, color2] = generateRandomColors();
+
     return (
         <tr key={key} className={`${styles.row}`}>
             <td className={styles.row_icon}>
@@ -10,21 +12,21 @@ function Row({key="", img, icon = "", rank, name, designation, hrs, changes }: a
             <td>{rank}</td>
             <td className={`${styles.row_exp} ${styles.row_name}`}>
                 <div>
-
-                <Image alt="Profile" src={img} width={25} height={25} style={{borderRadius: "50%"}} /> &nbsp;
-                <span>
-                {name}
-                </span>
+                    {/* <Image alt="Profile" src={img} width={25} height={25} style={{ borderRadius: "50%" }} /> &nbsp; */}
+                    <div className={styles.icon_wrapper} style={{background: `linear-gradient(to right, ${color1}, ${color2})`}}></div>
+                    <span>
+                        {name}
+                    </span>
                 </div>
-                    
+
             </td>
             <td className={styles.row_exp}>{designation}</td>
             <td>{hrs}</td>
             <td className={styles.row_changes}>
                 <div>
-                    <div className={`${styles.tri_wrapper} ${changes ? "": styles.tri_wrapper_inverted}`}>
-                        
-                    <div className={`${styles.triangle} ${changes ? styles.triangle_green : styles.triangle_red}`}></div>
+                    <div className={`${styles.tri_wrapper} ${changes ? "" : styles.tri_wrapper_inverted}`}>
+
+                        <div className={`${styles.triangle} ${changes ? styles.triangle_green : styles.triangle_red}`}></div>
                     </div>
                     <span>1.5 hrs</span>
                 </div>
@@ -33,12 +35,12 @@ function Row({key="", img, icon = "", rank, name, designation, hrs, changes }: a
     )
 }
 
-export default function DB_Body(props : any) {
+export default function DB_Body(props: any) {
     // const {tableRows} = props;
-    const tableRows:any = props.tableRows.map((item:any, i:number)=>{item['rank'] = i+1; return item});
+    const tableRows: any = props.tableRows.map((item: any, i: number) => { item['rank'] = i + 1; return item });
     const icons = ['1st.png', '2nd.png', '3rd.png']
-    icons.forEach((icon,i) => {
-        if(tableRows.length > i){
+    icons.forEach((icon, i) => {
+        if (tableRows.length > i) {
             tableRows[i]['icon'] = `/icons/_${icon}`;
         }
     })
@@ -61,7 +63,7 @@ export default function DB_Body(props : any) {
                         </tr>
                     </thead>
                     <tbody>
-                        {tableRows.map((d:any, i:number) => Row({key:i,...d}))}
+                        {tableRows.map((d: any, i: number) => Row({ key: i, ...d }))}
                         {/* {tableRows.map((d:any, i:number) => (<Row key={i+1} {...d} />))} */}
                     </tbody>
 
@@ -72,7 +74,7 @@ export default function DB_Body(props : any) {
                 <div className={styles.card}>
                     {/* <div className={styles.card_pic}><Image src={`/imgs/rakesh.png`} layout="fill" objectFit="contain"  alt={`Employee of the Month`} /></div> */}
                     <div className={styles.card_pic}>
-                        <Image src={`${tableRows[0]['img']}`} height={169} width={209} alt="Employ of the Month"/>
+                        <Image src={`${tableRows[0]['img']}`} height={169} width={209} alt="Employ of the Month" />
                     </div>
                     <div className={styles.card_title}>Employee of the Month</div>
                     <div className={styles.card_name}>{tableRows[0]['name']}</div>
@@ -85,4 +87,10 @@ export default function DB_Body(props : any) {
         </div>
     )
 
+}
+
+function generateRandomColors() {
+    const color1 = `rgb(${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)})`;
+    const color2 = `rgb(${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)})`;
+    return [color1, color2];
 }

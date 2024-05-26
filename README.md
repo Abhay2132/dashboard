@@ -11,7 +11,7 @@ This project is a dashboard user interface (UI) built with React.js and Next.js.
 
 ### Preview
 
-For live preview , visit [here](https://abhay2132.github.io/dashboard)
+![alt text](https://github.com/abhay2132/dashboard/blob/main/public/preview-pc.png?raw=true)
 
 ### Getting Started
 
