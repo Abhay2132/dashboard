@@ -1,0 +1,231 @@
+.db_body {
+    display: flex;
+    margin: 5px 0;
+}
+
+.db_table {
+    border: 1px solid #888;
+    border-radius: 10px;
+
+    border-spacing: 0;
+    border-collapse: collapse;
+    border-style: hidden;
+
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 10px;
+}
+
+.db_emp {
+    background-color: 0;
+    width: min(300px, 98%);
+    margin: 0 auto;
+    /* flex-grow: 0; */
+}
+
+.table_wrapper {
+    overflow: auto;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+    width: 100%;
+    margin-right: 5px;
+}
+
+.row {
+    /* background-color: green; */
+    width: 100%;
+    position: relative;
+
+    /* display: flex; */
+    /* display: grid; */
+    /* grid-template-columns: auto auto auto auto auto; */
+}
+
+.table_header {
+    /* display: block; */
+    /* border: 10px solid; */
+    background-color: #1E40AE;
+    color: #fff;
+    border-radius: 10px;
+    border-bottom: 1px solid #888;
+    /* padding: 10px 0; */
+    height: 50px;
+}
+
+.db_table th,
+.db_table td {
+    font-weight: 400;
+    text-align: left;
+    /* padding: 7px 10px; */
+    padding: 10px;
+    border-top: 1px solid #eee;
+    user-select: contain;
+}
+
+.db_table th {
+    border-top: 0;
+}
+
+.row_exp {
+    white-space: nowrap;
+}
+
+.row_name>div>span {
+    font-weight: 500;
+}
+
+.row_name>div {
+    gap: 5px;
+    display: flex;
+    align-items: center;
+}
+
+.db_body tbody tr:hover {
+    background-color: #efefef;
+}
+
+.row_icon {
+    width: 40px;
+    padding: 0 !important;
+    /* outline: 1px solid; */
+    padding: 5px;
+    /* display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%; */
+}
+
+.row_icon>img {
+    /* border: 1px solid red; */
+    /* margin: auto 0; */
+    transform: translateY(1px);
+}
+
+.icon_img {
+    margin: 0 5px;
+    translate: translateY(3px);
+}
+
+.card {
+    width: min(500px, 98%);
+    background-color: #fff;
+    position: relative;
+    margin: 0;
+    overflow: hidden;
+    border: 1px solid #efefef;
+    border-radius: 5px;
+    text-align: center;
+}
+
+@media screen and (max-width: 767px) {
+    .db_body {
+        display: block;
+        /* Adjust navigation layout for mobile */
+    }
+
+    .db_table {
+        font-size: 0.9rem;
+    }
+
+
+    .table_wrapper {
+        margin: 0;
+    }
+}
+
+.card_pic {
+    margin: 3%;
+    width: 94%;
+}
+
+.card_pic,
+.card_bg {
+    position: relative;
+    height: fit-content;
+}
+
+.card_bg {
+    width: 100%;
+}
+
+.card_pic>img,
+.card_bg>img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+.card_title {
+    text-align: center;
+    color: rgb(16, 49, 150);
+    font-weight: 500;
+    font-size: 1.1rem;
+}
+
+.card_name {
+    font-weight: 500;
+
+}
+
+.card_designation {
+    font-size: 0.8rem;
+    color: #888;
+}
+
+.row_changes{
+    /* background-color: red; */
+}
+
+.row_changes > div{
+    display: flex;
+    /* border: 1px solid red; */
+    position: relative;
+    /* padding-left: 30px; */
+}
+
+.row_changes > div > span {
+    white-space: nowrap;
+}
+
+.triangle_red{
+    --clr1: #FA6900;
+    --clr2: #C02942;
+    --rot: 180deg;
+}
+
+.triangle_green{
+    --clr1: rgb(0, 210, 0);
+    --clr2: rgb(0, 211, 0);
+    --rot: 0deg;
+}
+
+.triangle {
+    --r: 20px;
+    /* border radius */
+    width: 200px;
+    aspect-ratio: 1/cos(30deg);
+    position: absolute;
+    --_g: calc(tan(60deg)*var(--r)) bottom var(--r), red 98%, #0000 101%;
+    mask: conic-gradient(from -30deg at 50% calc(200% - 3*var(--r)/2), #000 60deg, #0000 0) 0 100%/100% calc(100% - 3*var(--r)/2) no-repeat,
+        radial-gradient(var(--r) at 50% calc(2*var(--r)), #000 98%, #0000 101%),
+        radial-gradient(var(--r) at left var(--_g)),
+        radial-gradient(var(--r) at right var(--_g));
+    clip-path: polygon(50% 0, 100% 100%, 0 100%);
+    background: linear-gradient(45deg, var(--clr1), var(--clr2));
+    transform-origin: 0% 0%;
+    transform: scale(0.08);
+    left: 0;
+    top: 1px;
+}
+
+.tri_wrapper_inverted{
+    transform: rotate(180deg);
+}
+
+.tri_wrapper{
+    /* outline: 1px solid red; */
+    position: relative;
+    height: 16px;
+    width: 16px;
+    margin-right: 7px;
+}

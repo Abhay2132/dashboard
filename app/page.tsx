@@ -1,95 +1,33 @@
 import Image from "next/image";
+import DB_Header from "./ui/db_header/db_header";
+import DB_Body
+    from "./ui/db_body/db_body";
 import styles from "./page.module.css";
+import Head from "next/head";
 
-export default function Home() {
-  return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>app/page.tsx</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+// data to be fetch from database
+const getData = Promise.resolve([
+    { icon: '', img: "/imgs/persons/rakesh.png", name: "Rakesh Sharma", designation: "UI/UX Designer", hrs: "7(38)", changes: true },
+    { icon: '', img: "/imgs/persons/rakesh.png", name: "Ankit Thakur", designation: "HR Recruiter", hrs: "7(34)", changes: false },
+    { icon: '', img: "/imgs/persons/rakesh.png", name: "Harsh Yadav", designation: "Product Manager", hrs: "7(41)", changes: true },
+    { icon: '', img: "/imgs/persons/rakesh.png", name: "Harsha Shivahare", designation: "Designer", hrs: "7(42)", changes: true },
+    { icon: '', img: "/imgs/persons/rakesh.png", name: "Vanhi Rai", designation: "UI/UX Designer", hrs: "7(38)", changes: false },
+    { icon: '', img: "/imgs/persons/rakesh.png", name: "Bhanu Sharma", designation: "HR Recruiter", hrs: "7(34)", changes: false },
+    { icon: '', img: "/imgs/persons/rakesh.png", name: "Sunil Yadav", designation: "Product Manager", hrs: "7(41)", changes: true },
+    { icon: '', img: "/imgs/persons/rakesh.png", name: "Akash Roy", designation: "Designer", hrs: "7(42)", changes: false },
+    { icon: '', img: "/imgs/persons/rakesh.png", name: "Rohit Soni", designation: "Designer", hrs: "7(42)", changes: false },
+    { icon: '', img: "/imgs/persons/rakesh.png", name: "Suraj Chauhan", designation: "Designer", hrs: "7(42)", changes: false },
+])
+
+export default async function Page() {
+    let data = await getData;
+    return (
+        <div id={`dashboard`} className={styles.dashboard_box}>
+            <Head>
+                <link rel="icon" href="/favicon.png" type="image/png" />
+            </Head>
+            <DB_Header />
+            <DB_Body tableRows={data} />
         </div>
-      </div>
-
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore starter templates for Next.js.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
-  );
+    )
 }
