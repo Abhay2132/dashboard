@@ -81,7 +81,7 @@
 }
 
 .db_body tbody tr:hover {
-    background-color: #efefef;
+    background-color: #e0ffe5 !important;
 }
 
 .db_body tbody tr:nth-child(even){
