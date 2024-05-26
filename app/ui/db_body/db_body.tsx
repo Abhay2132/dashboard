@@ -1,10 +1,12 @@
 import Image from "next/image"
 import styles from "./db_body.module.css"
 
-function Row({key, img, icon = "", rank, name, designation, hrs, changes }: any) {
+function Row({key="", img, icon = "", rank, name, designation, hrs, changes }: any) {
     return (
         <tr key={key} className={`${styles.row}`}>
-            <td className={styles.row_icon}>{icon ? <Image className={styles.icon_img} height={30} width={30} src={icon} alt="Logo" /> : ""}</td>
+            <td className={styles.row_icon}>
+                {icon ? <Image className={styles.icon_img} height={30} width={30} src={icon} alt="Logo" /> : ""}
+            </td>
             <td>{rank}</td>
             <td className={`${styles.row_exp} ${styles.row_name}`}>
                 <div>
@@ -59,8 +61,8 @@ export default function DB_Body(props : any) {
                         </tr>
                     </thead>
                     <tbody>
-                        {/* {tableRows.map((d:any, i:number) => Row({key:i,...d}))} */}
-                        {tableRows.map((d:any, i:number) => (<Row key={i+1} {...d} />))}
+                        {tableRows.map((d:any, i:number) => Row({key:i,...d}))}
+                        {/* {tableRows.map((d:any, i:number) => (<Row key={i+1} {...d} />))} */}
                     </tbody>
 
                 </table>
@@ -70,13 +72,13 @@ export default function DB_Body(props : any) {
                 <div className={styles.card}>
                     {/* <div className={styles.card_pic}><Image src={`/imgs/rakesh.png`} layout="fill" objectFit="contain"  alt={`Employee of the Month`} /></div> */}
                     <div className={styles.card_pic}>
-                        <img src={tableRows[0]['img']} alt="Employ of the Month"/>
+                        <Image src={`${tableRows[0]['img']}`} height={169} width={209} alt="Employ of the Month"/>
                     </div>
                     <div className={styles.card_title}>Employee of the Month</div>
                     <div className={styles.card_name}>{tableRows[0]['name']}</div>
                     <div className={styles.card_designation}>{tableRows[0]['designation']}</div>
                     <div className={styles.card_bg}>
-                        <img src="/imgs/emp_of_month.jpg"/>
+                        <Image src={`/imgs/emp_of_month.jpg`} alt={`card_bg`} width={222} height={148} />
                     </div>
                 </div>
             </div>

@@ -1,9 +1,7 @@
-import Image from "next/image";
 import DB_Header from "./ui/db_header/db_header";
 import DB_Body
     from "./ui/db_body/db_body";
 import styles from "./page.module.css";
-import Head from "next/head";
 
 // data to be fetch from database
 const getData = Promise.resolve([
@@ -23,11 +21,9 @@ export default async function Page() {
     let data = await getData;
     return (
         <div id={`dashboard`} className={styles.dashboard_box}>
-            <Head>
-                <link rel="icon" href="/favicon.png" type="image/png" />
-            </Head>
             <DB_Header />
             <DB_Body tableRows={data} />
         </div>
     )
 }
+

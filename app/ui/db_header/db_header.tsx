@@ -11,7 +11,7 @@ export default function DB_Header() {
     return (<div className={styles.db_header}>
         <div className={styles.db_icon} >
             <Image
-                src="/favicon.png"
+                src={`/favicon.png`}
                 alt="LOGO"
                 width={40}
                 height={40}
